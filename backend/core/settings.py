@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'weather',
     # Third party apps
     'rest_framework',
-    'rest_framework_gis'
+    'rest_framework_gis',
+    'leaflet',
 ]
 """
 Mandatory requirement for GeoDjango.
