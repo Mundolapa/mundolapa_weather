@@ -52,16 +52,13 @@ Mandatory requirement for GeoDjango.
 It is an OS/Geo library for reading and writing raster and vector geospatial data formats.
 For windows OS use a file dowloaded from https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
 must be compatible with your windows processor and your python version
-Installed locally with python -m pip install GDAL-3.4.3-cp310-cp310-win_amd64.whl
+Installed locally with python -m pip install GDAL-3.3.3-cp310-cp310-win_amd64.whl
 For Debian-based GNU/Linux distributions $ sudo apt install gdal-bin
 """
-# GDAL_LIBRARY_PATH = os.path.join(
-#     BASE_DIR, '../venv\Lib\site-packages\osgeo\gdal304')
-# GEOS_LIBRARY_PATH = os.path.join(
-#     BASE_DIR, '../venv\Lib\site-packages\osgeo\geos_c')
-
-GDAL_LIBRARY_PATH = r'C:\Users\LaraA\GitHub\ipmtools\venv\Lib\site-packages\osgeo\gdal303'
-GEOS_LIBRARY_PATH = r'C:\Users\LaraA\GitHub\ipmtools\venv\Lib\site-packages\osgeo\geos_c'
+GDAL_LIBRARY_PATH = os.path.join(
+    BASE_DIR, '../venv\Lib\site-packages\osgeo\gdal303')
+GEOS_LIBRARY_PATH = os.path.join(
+    BASE_DIR, '../venv\Lib\site-packages\osgeo\geos_c')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
