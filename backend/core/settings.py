@@ -9,12 +9,14 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 
 from prettyconf import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,7 +40,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    # Local apps
+    'weather',
+    # Third party apps
+    'rest_framework',
+    'rest_framework_gis'
 ]
+"""
+Mandatory requirement for GeoDjango.
+It is an OS/Geo library for reading and writing raster and vector geospatial data formats.
+For windows OS use a file dowloaded from https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
+must be compatible with your windows processor and your python version
+Installed locally with python -m pip install GDAL-3.4.3-cp310-cp310-win_amd64.whl
+For Debian-based GNU/Linux distributions $ sudo apt install gdal-bin
+"""
+# GDAL_LIBRARY_PATH = os.path.join(
+#     BASE_DIR, '../venv\Lib\site-packages\osgeo\gdal304')
+# GEOS_LIBRARY_PATH = os.path.join(
+#     BASE_DIR, '../venv\Lib\site-packages\osgeo\geos_c')
+
+GDAL_LIBRARY_PATH = r'C:\Users\LaraA\GitHub\ipmtools\venv\Lib\site-packages\osgeo\gdal303'
+GEOS_LIBRARY_PATH = r'C:\Users\LaraA\GitHub\ipmtools\venv\Lib\site-packages\osgeo\geos_c'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,12 +95,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.0/ref/settings/#DB_DEFAULT
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': config("DB_DEFAULT_NAME"),
+        'USER': config("DB_DEFAULT_USER"),
+        'PASSWORD': config("DB_DEFAULT_PASSWORD"),
+        'HOST': config("DB_DEFAULT_HOST"),
+        'PORT': config("DB_DEFAULT_PORT"),
     }
 }
 

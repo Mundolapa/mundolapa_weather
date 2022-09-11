@@ -1,3 +1,8 @@
-from django.contrib import admin
+from django.contrib.gis import admin
 
-# Register your models here.
+from weather.models import Station
+
+
+@admin.register(Station)
+class StationAdmin(admin.OSMGeoAdmin):
+    list_display = ("name", "location")
