@@ -1,14 +1,37 @@
-from dataclasses import field
-from msilib.schema import Class
-from rest_framework_gis import serializers
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
+from rest_framework.serializers import ModelSerializer
 
-from weather.models import Station
+from api.serializers import StationPublicSerializer
+
+from weather.models import Station, StationData
 
 
-class StationSerializer(serializers.GeoFeatureModelSerializer):
+class StationSerializer(GeoFeatureModelSerializer):
     """Weather station marker GeoJSON serializer"""
 
     class Meta:
         fields = ("id", "name")
         geo_field = "location"
         model = Station
+
+
+class StationDataSerializer(ModelSerializer):
+    station = StationPublicSerializer()
+
+    class Meta:
+        model = StationData
+        fields = [
+            'id',
+            'temperature_avg',
+            'temperature_max',
+            'temperature_min',
+            'relative_humidity',
+            'sunshine_duration',
+            'global_radiation',
+            'daily_eto',
+            'wind_speed',
+            'precipitation',
+            'datetime',
+            'station',
+        ]
+
