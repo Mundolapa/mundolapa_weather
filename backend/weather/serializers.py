@@ -16,6 +16,7 @@ class StationSerializer(GeoFeatureModelSerializer):
 
 
 class StationDataSerializer(ModelSerializer):
+    """Weather data for each station serializer"""
     station = StationPublicSerializer()
 
     class Meta:

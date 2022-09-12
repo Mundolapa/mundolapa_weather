@@ -13,10 +13,12 @@ class MarkersMapView(TemplateView):
 
 
 class StationDataListView(generics.ListAPIView):
+    """Weather station data complete list"""
     queryset = StationData.objects.all()
     serializer_class = serializers.StationDataSerializer
 
 
 class StationDataDetailAPIView(generics.RetrieveAPIView):
+    """Weather station data detail list lookup_field = 'pk'?"""
     queryset = StationData.objects.all()
     serializer_class = serializers.StationDataSerializer
