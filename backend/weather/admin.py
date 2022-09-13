@@ -12,4 +12,4 @@ class StationAdmin(LeafletGeoAdmin):
 @admin.register(StationData)
 class StationDataAdmin(admin.ModelAdmin):
     # list_display = ['value', 'when', 'duration', 'sensor_id']
-    list_filter = ['datetime']
+    list_filter = ['event_date']

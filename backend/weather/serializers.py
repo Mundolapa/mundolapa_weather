@@ -32,7 +32,7 @@ class StationDataSerializer(ModelSerializer):
             'daily_eto',
             'wind_speed',
             'precipitation',
-            'datetime',
+            'event_date',
             'station',
         ]
 

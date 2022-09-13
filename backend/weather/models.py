@@ -38,12 +38,12 @@ class StationData(models.Model):
         max_digits=12, decimal_places=5, default=0)
     precipitation = models.DecimalField(
         max_digits=12, decimal_places=5, default=0)
-    datetime = models.DateTimeField()
+    event_date = models.DateField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Station: {self.station.name}, Datetime: {self.datetime.astimezone()}'
+        return f'Station: {self.station.name}, Datetime: {self.event_date}'
 
     @property
     def stations(self):
