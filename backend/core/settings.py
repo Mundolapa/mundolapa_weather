@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     # Local apps
+    'api',
     'weather',
     # Third party apps
     'rest_framework',
     'rest_framework_gis',
+    'rest_framework.authtoken',
     'leaflet',
 ]
 """

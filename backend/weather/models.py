@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.contrib.gis.db import models
 
 

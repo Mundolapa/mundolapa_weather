@@ -8,7 +8,7 @@ map.locate()
     .on("locationerror", () => map.setView([0, 0], 5));
 
 async function load_markers() {
-    const markers_url = `/api/markers/?in_bbox=${map
+    const markers_url = `/weather/markers/?in_bbox=${map
         .getBounds()
         .toBBoxString()}`;
     const response = await fetch(markers_url);
